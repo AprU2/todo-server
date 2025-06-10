@@ -24,6 +24,10 @@ async function bootstrap() {
     allowedHeaders:
       'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   });
+  app.getHttpAdapter().get('/api/health', (res) => {
+    res.statusCode = 200;
+    res.end('OK');
+  });
   await app.listen(port);
 }
 bootstrap();
